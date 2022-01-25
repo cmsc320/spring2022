@@ -65,7 +65,7 @@ Docker is perhaps the most popular container technology at this time, and is wid
 - Follow the appropriate `Getting Started` guide to make sure that Docker is working as expected.
 	- Macs: https://docs.docker.com/docker-for-mac/
 	- Windows: https://docs.docker.com/docker-for-windows/
-- We will use the `Jupyter Notebook Data Science Stack` for now. You can start it using the following command in the commandline -- make sure you're in the git directory. More detailed description of the image (thanks, José Calderón, for updating this in Summer 2021!) is available at: https://hub.docker.com/r/jmct/cmsc320
+- We will use the `Jupyter Notebook Data Science Stack` for now. You can start it using the following command in the commandline -- make sure you're in the git directory. More detailed description of the image  is available at: https://hub.docker.com/r/jmct/cmsc320
 	- docker run -it -v $(pwd)/project0:/home/jovyan/notebooks  --rm -p 8888:8888 jmct/cmsc320
 
 	Note: If this command doesn't work, please replace `$(pwd)` with the current git directory.
