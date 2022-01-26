@@ -68,7 +68,7 @@ Docker is perhaps the most popular container technology at this time, and is wid
 - We will use the `Jupyter Notebook Data Science Stack` for now. You can start it using the following command in the commandline -- make sure you're in the git directory. More detailed description of the image  is available at: https://hub.docker.com/r/jmct/cmsc320
 	- docker run -it -v $(pwd)/project0:/home/jovyan/notebooks  --rm -p 8888:8888 jmct/cmsc320
   - Note 1: If you are running on an M1-powered Mac, you will need to add the `:m1` tag to the image name: e.g. `jmct/cmsc320:m1`
-	- Note 2: If this command doesn't work, please replace `$(pwd)` with the current git directory.
+  - Note 2: If this command doesn't work, please replace `$(pwd)` with the current git directory.
 - Quick explanation of the above command (don't worry if you don't follow this right now):
 	- `-p 8888:8888` maps the 8888 port on the host OS to the 8888 port on the guest container. So if you were to go to http://localhost:8888, it will redirect to the 8888 port on the container - Jupyter Notebook starts a web server on that port on the guest.
 	- `-v $(pwd)/project0:/home/jovyan/notebooks` mounts the current project0 directory on the guest, so that everything in project0 directry will be available in `notebooks` directory on the guest. $(pwd) automatically runs the `pwd` unix command and places the result directly, so that you don't have to type the location of the git directry manually.
