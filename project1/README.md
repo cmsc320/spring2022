@@ -3,11 +3,11 @@
 #### _CMSC320_
 
 **Posted:** February 8, 2022; 
-**Due:** February 17, 2022
+**Due:** February 22, 2022
 
 Please _read the entire document before starting_!
 
-You've been hired by a new space weather startup looking to disrupt the space weather reporting business. Your first project is to provide better data about the top 50 solar flares recorded so far than that shown by your competitor SpaceWeatherLive.com. To do this, they've pointed you to [this messy HTML page](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html) from NASA ([available here also (as a backup)](http://cmsc320.github.io/files/waves_type2.html)) where you can get the extra data your startup is going to post in your new spiffy site.
+You've been hired by a new space weather startup looking to disrupt the space weather reporting business. Your first project is to provide better data about the top 50 solar flares recorded so far than that shown by your competitor SpaceWeatherLive.com. To do this, they've pointed you to [this messy HTML page](http://cmsc320.github.io/files/waves_type2.html) from NASA ([(that link is just a copy of this real NASA page but we don't want to DDoS NASA)](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html)) where you can get the extra data your startup is going to post in your new spiffy site.
 
 Of course, you don't have access to the raw data for either of these two tables, so as an enterprising data scientist you will scrape this information directly from each HTML page using all the great tools available to you in Python. By the way, you should read up a bit on [Solar Flares](https://en.wikipedia.org/wiki/Solar_flare), [coronal mass ejections](https://www.spaceweatherlive.com/en/help/what-is-a-coronal-mass-ejection-cme), [the solar flare alphabet soup](http://spaceweather.com/glossary/flareclasses.html), [the scary storms of Halloween 2003](http://www.nasa.gov/topics/solarsystem/features/halloween_storms.html), and [sickening solar flares](https://science.nasa.gov/science-news/science-at-nasa/2005/27jan_solarflares).
 
@@ -27,31 +27,19 @@ Use Python to scrape data for the top 50 solar flares shown on SpaceWeatherLive.
 8.  Set reasonable names for the table columns, e.g., rank, x_classification, date, region, start_time, maximum_time, end_time, movie. `Pandas.columns` makes this very simple.
 
 
-The result should be a data frame, with the first few rows as:
-
-``` 
-rank x_classification date region start_time maximum_time end_time movie
-
-0  1 X28.0 2003/11/04 0486  19:29  19:53  20:06 MovieView archive
-
-1  2 X20 2001/04/02 9393  21:32  21:51  22:03 MovieView archive
-
-2  3 X17.2 2003/10/28 0486  09:51  11:10  11:24 MovieView archive
-
-3  4 X17.0 2005/09/07 0808  17:17  17:40  18:03 MovieView archive
-
-4  5 X14.4 2001/04/15 9415  13:19  13:50  13:55 MovieView archive
-
-5  6 X10.0 2003/10/29 0486  20:37  20:49  21:01 MovieView archive
-
-6  7  X9.4 1997/11/06  -  11:49  11:55  12:01 MovieView archive
-
-7  8  X9.0 2006/12/05 0930  10:18  10:35  10:45 MovieView archive
-
-8  9  X8.3 2003/11/02 0486  17:03  17:25  17:39 MovieView archive
-
-9  10  X7.1 2005/01/20 0720  06:36  07:01  07:26 MovieView archive
-
+The result should be a data frame, with the first few rows as (depending on how you created the table, it may not look exactly like this, that's okay!):
+```
+   Unnamed: 0 Unnamed: 1  Unnamed: 2  Region  Start Maximum    End  Unnamed: 7
+0           1       X28+  2003/11/04     486  19:29   19:53  20:06  MovieView archive 
+1           2       X20+  2001/04/02    9393  21:32   21:51  22:03  MovieView archive 
+2           3     X17.2+  2003/10/28     486  09:51   11:10  11:24  MovieView archive 
+3           4       X17+  2005/09/07     808  17:17   17:40  18:03  MovieView archive 
+4           5      X14.4  2001/04/15    9415  13:19   13:50  13:55  MovieView archive 
+5           6        X10  2003/10/29     486  20:37   20:49  21:01  MovieView archive 
+6           7       X9.4  1997/11/06    8100  11:49   11:55  12:01  MovieView archive 
+7           8       X9.3  2017/09/06    2673  11:53   12:02  12:10  MovieView archive 
+8           9         X9  2006/12/05     930  10:18   10:35  10:45  MovieView archive 
+9          10       X8.3  2003/11/02     486  17:03   17:25  17:39  MovieView archive 
  ... with 40 more rows
 ```
 
@@ -64,37 +52,26 @@ Your next step is to make sure this table is usable using pandas:
 3.  Update the values in the dataframe as you do this. `.at` should prove useful.
 4.  Set regions coded as - as missing (Using an appropriate 'missing data' value). You can use dataframe.replace() here.
 
-The result of this step should be a data frame with the first few rows as:
-
+The result of this step should be a data frame with the first few rows being similar to:
 ```
-rank x_classification date region start_time maximum_time end_time movie
-
-0  1 X28.0 2003-11-04 19:29:00 2003-11-04 19:53:00 2003-11-04 20:06:00 0486
-
-1  2 X20 2001-04-02 21:32:00 2001-04-02 21:51:00 2001-04-02 22:03:00 9393
-
-2  3 X17.2 2003-10-28 09:51:00 2003-10-28 11:10:00 2003-10-28 11:24:00 0486
-
-3  4 X17.0 2005-09-07 17:17:00 2005-09-07 17:40:00 2005-09-07 18:03:00 0808
-
-4  5 X14.4 2001-04-15 13:19:00 2001-04-15 13:50:00 2001-04-15 13:55:00 9415
-
-5  6 X10.0 2003-10-29 20:37:00 2003-10-29 20:49:00 2003-10-29 21:01:00 0486
-
-6  7  X9.4 1997-11-06 11:49:00 1997-11-06 11:55:00 1997-11-06 12:01:00 <NA>
-
-7  8  X9.0 2006-12-05 10:18:00 2006-12-05 10:35:00 2006-12-05 10:45:00 0930
-
-8  9  X8.3 2003-11-02 17:03:00 2003-11-02 17:25:00 2003-11-02 17:39:00 0486
-
-9  10  X7.1 2005-01-20 06:36:00 2005-01-20 07:01:00 2005-01-20 07:26:00 0720
+  rank x_classification date        region start_time maximum_time end_time 
+1  1    X28.0            2003/11/04  10486   19:29      19:53        20:06  
+2  2    X20.0            2001/04/02  9393    21:32      21:51        22:03  
+3  3    X17.2            2003/10/28  10486   09:51      11:10        11:24  
+4  4    X17.0            2005/09/07  10808   17:17      17:40        18:03  
+5  5    X14.4            2001/04/15  9415    13:19      13:50        13:55  
+6  6    X10              2003/10/29  10486   20:37      20:49        21:01  
+7  7    X9.4             1997/11/06  8100    11:49      11:55        12:01  
+8  8    X9.3             2017/09/06  12673   11:53      12:02        12:10  
+9  9    X9               2006/12/05  10930   10:18      10:35        10:45  
+10 10   X8.3             2003/11/02  10486   17:03      17:25        17:39 
 
  ... with 40 more rows
 ```
 
 ### Step 3: Scrape the NASA data (15 pts)
 
-Next you need to scrape the data in [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html) ([also available here](http://www.hcbravo.org/IntroDataSci/misc/waves_type2.html)) to get additional data about these solar flares. This table format is described here: [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm), and here:
+Next you need to scrape the data in [https://cmsc320.github.io/files/waves_type2.html](https://cmsc320.github.io/files/waves_type2.html) (which is a mirror of [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html)) to get additional data about these solar flares. This table format is described here: [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm), and here:
 
 ```
 The Wind/WAVES type II burst catalog: A brief description
@@ -284,4 +261,4 @@ Prepare a Jupyter Notebook file that includes for each step in Part 1: (a) code 
 
 From your Jupyter Notebook, create a PDF or HTML rendering of the Notebook.
 
-Submit the resulting .ipynb and your rendered notebook (PDF or HTML) to ELMS.
+Submit the resulting .ipynb, your formatted notebook in PDF (i.e. not "print to PDF") and your rendered notebook in HTML to ELMS.
