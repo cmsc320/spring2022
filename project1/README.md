@@ -259,6 +259,10 @@ Prepare one plot that shows the top 50 solar flares in context with all data ava
 
 Prepare a Jupyter Notebook file that includes for each step in Part 1: (a) code to carry out the step discussed, (b) output showing the output of your code, similar to the examples above, and (c) a short prose description of how your code works. For questions 1 and 2 of Part 2, follow the instructions there. For Question 3 of part 2 provide: (a) a short description (2 sentences) of what the intent of your plot is (think in terms of our discussion on how we show variation, co-variation in terms of central trend, spread, skew etc.), (b) code to produce your plot, (c) a short text description of your plot, and (d) a sentence or two of interpretation of your plot (again think of variation, co-variation, etc.).
 
-From your Jupyter Notebook, create a PDF or HTML rendering of the Notebook.
+From your Jupyter Notebook, create a PDF _and_ HTML rendering of the Notebook.
 
-Submit the resulting .ipynb, your formatted notebook in PDF (i.e. not "print to PDF") and your rendered notebook in HTML to ELMS.
+Submit the following:
+
+* your resulting `.ipynb` (for us to be able to reproduce your results
+* a formatted PDF of your notebook (i.e. not "print to PDF")
+* you notebook rendered as HTML (do not worry about how the resulting HTML looks)
