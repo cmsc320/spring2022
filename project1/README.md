@@ -71,7 +71,7 @@ The result of this step should be a data frame with the first few rows being sim
 
 ### Step 3: Scrape the NASA data (15 pts)
 
-Next you need to scrape the data in [https://cmsc320.github.io/files/waves_type2.html](https://cmsc320.github.io/files/waves_type2.html) (which is a mirror of [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html)) to get additional data about these solar flares. This table format is described here: [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm), and here:
+Next you need to scrape the data in [https://cmsc320.github.io/files/waves_type2.html](https://cmsc320.github.io/files/waves_type2.html) (which is a mirror of [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2.html)) to get additional data about these solar flares. This table format is described here: [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](https://web.archive.org/web/20210318011551/http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm), and here:
 
 ```
 The Wind/WAVES type II burst catalog: A brief description
@@ -196,7 +196,7 @@ start_date start_time end_date end_time start_frequency end_frequency flare_loca
 
 Now, we tidy up the NASA table. Here we will code missing observations properly, recode columns that correspond to more than one piece of information, and treat dates and times appropriately.
 
-1.  Recode any missing entries as NaN. Refer to the data description in [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm)  (and above) to see how missing entries are encoded in each column. Be sure to look carefully at the actual data, as the nasa descriptions might not be completely accurate.
+1.  Recode any missing entries as NaN. Refer to the data description in [http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm](https://web.archive.org/web/20210318011551/http://cdaw.gsfc.nasa.gov/CME_list/radio/waves_type2_description.htm) (and above) (new mirror, thanks to Wesley Smith for pointint out that the mirror no longer worked) to see how missing entries are encoded in each column. Be sure to look carefully at the actual data, as the nasa descriptions might not be completely accurate.
 2.  The CPA column (cme_angle) contains angles in degrees for most rows, except for halo flares, which are coded as Halo. Create a new column that indicates if a row corresponds to a halo flare or not, and then replace Halo entries in the cme_angle column as NA.
 3.  The width column indicates if the given value is a lower bound. Create a new column that indicates if width is given as a lower bound, and remove any non-numeric part of the width column.
 4.  Combine date and time columns for start, end and cme so they can be encoded as datetime objects.
