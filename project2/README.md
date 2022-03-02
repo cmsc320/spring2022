@@ -190,4 +190,4 @@ Prepare a Jupyter notebook that includes for each Problem: (a) code to carry out
 
 All axes in plots should be labeled in an informative manner. Your answers to any question that refers to a plot should include both (a) a text description of your plot, and (b) a sentence or two of interpretation as it relates to the question asked.
 
-Submit to ELMS at Project 2 Assignment Submission. You should include an .ipynb and either a .pdf or .html. Some students have found typesetting a PDF to be time-consuming. Make sure you are generating PDFs as you work on the project.
+Submit to ELMS at Project 2 Assignment Submission. You should include an .ipynb, a .pdf and a .html. Some students have found typesetting a PDF to be time-consuming. Make sure you are generating PDFs as you work on the project.
