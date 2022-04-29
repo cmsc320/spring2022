@@ -75,7 +75,8 @@ OpenStreetMap.
 Use markers, [as described in the
 documentation](https://python-visualization.github.io/folium/quickstart.html#Markers)
 to mark information from your dataset. The task for this project is to come
-up with a way to differentiate the data marked on the map. If all arrests use
+up with a way to differentiate the data marked on the map. If all crashes
+(or whatever your data is about) use
 the same marker type, the map will be near meaningless. The columns in
 your dataset will be a good first step, but you'll likely want to only
 differentiate among a subset of the columns.
